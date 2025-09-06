@@ -29,6 +29,31 @@ class LmsSeeder extends Seeder
             'email_verified_at' => now(),
         ]);
 
+        // Create specific users as requested
+        User::create([
+            'name' => 'Siswa 1',
+            'email' => 'siswa1@gmail.com',
+            'password' => Hash::make('S1swa1'),
+            'role' => 'student',
+            'is_active' => true,
+            'email_verified_at' => now(),
+        ]);
+
+        User::create([
+            'name' => 'Guru 1',
+            'email' => 'guru1@gmail.com',
+            'password' => Hash::make('GRu01'),
+            'role' => 'teacher',
+            'is_active' => true,
+            'email_verified_at' => now(),
+        ]);
+
+        // Update the existing admin user email and password
+        $admin->update([
+            'email' => 'adminBEL@gmail.com',
+            'password' => Hash::make('AdmBEL25'),
+        ]);
+
         // Create teachers
         $teachers = User::factory()->count(5)->teacher()->create();
 
